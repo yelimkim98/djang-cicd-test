@@ -19,6 +19,9 @@ jobs:
           python-version: '3.12.6'
       
       - name: 'Install Dependencies'
+        # 파이프 안써주면
+        # python -m pip install --upgrade pip pip install ...
+        # 요러케 실행하려고 해서 에러남
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -36,4 +39,4 @@ jobs:
         run: |
           docker build -t $REPO .
           docker tag $REPO:latest $NAME/$REPO:latest
-          docker push $NAME/REPO:latest
+          docker push $NAME/$REPO:latest
